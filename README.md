@@ -33,6 +33,7 @@
     1. m/d/y H:M:S
     2. d/m/y H:M:S
     3. y/m/d H:M:S
+    
 ## Adding new data sets
 1. Add a row to *input/meta-data.txt* with the information and your data set.
 2. Create a text file with hive data (see formats above) and save it as */input/xxx.txt*.

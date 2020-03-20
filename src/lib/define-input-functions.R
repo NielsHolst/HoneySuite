@@ -273,9 +273,9 @@ cos_sin_model = function(w) {
     model = lm(y~cos(x) + sin(x), data=M) 
     co = coef(model)
     r2 = summary(model)$r.squared
-    data.frame(Intercept=co[1], Cos=co[2], Sin=co[3], CosSinR2=r2)
+    data.frame(Intercept=co[1], Cos=co[2], Sin=co[3], CosSinR2=r2, CosSinAmplitude = 2*sqrt(co[2]^2 + co[3]^2)) 
   } else {
-    data.frame(Intercept=NA, Cos=NA, Sin=NA, CosSinR2=NA)
+    data.frame(Intercept=NA, Cos=NA, Sin=NA, CosSinR2=NA, CosSinAmplitude=NA)
   }
 }
 
@@ -306,7 +306,7 @@ process_meta_record = function(record) {
   W = cbind(W, DetrendedWeight=M$DetrendedWeight)
 
   cos_sin_models = ddply(W, .(Hive, Date), cos_sin_model)
-  WD = join(WD, cos_sin_models[c("Hive","Date","CosSinR2")])
+  WD = join(WD, cos_sin_models[c("Hive","Date","CosSinR2","CosSinAmplitude")])
   
   curves = ddply(W, .(Hive, Date), predict_cos_sin_model, cos_sin_models=cos_sin_models)
   W = cbind(W, CosSinWeight=curves$CosSinWeight)

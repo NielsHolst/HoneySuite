@@ -14,11 +14,11 @@ plot_variables(az2014, c("Weight", "DetrendedWeight", "CosSinWeight"), dmy("1/7/
 plots = list(
   plot_variables(az2014, c("Weight", "DetrendedWeight", "CosSinWeight"), dmy("1/7/2014"), 1),
   plot_variables(az2014, c("Weight", "DetrendedWeight", "CosSinWeight"), dmy("1/7/2014"), 7),
-  plot_variables_by_day(az2014, c("WeightGain", "CosSinR2"), dmy("1/7/2014"), 14),
+  plot_variables_by_day(az2014, c("WeightGain", "CosSinR2", "CosSinAmplitude"), dmy("1/7/2014"), 14),
 
   plot_variables(az2015, c("Weight", "DetrendedWeight", "CosSinWeight"), dmy("1/7/2015"), 1),
   plot_variables(az2015, c("Weight", "DetrendedWeight", "CosSinWeight"), dmy("1/7/2015"), 7),
-  plot_variables_by_day(az2015, c("WeightGain", "CosSinR2"), dmy("1/7/2015"), 14)
+  plot_variables_by_day(az2015, c("WeightGain", "CosSinR2", "CosSinAmplitude"), dmy("1/7/2015"), 14)
 )
 
 pdf("../output/plot-az.pdf", paper="USr")
