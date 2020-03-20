@@ -1,0 +1,13 @@
+Hive	Treatment
+hive73	2:High
+hive64	2:High
+hive68	2:High
+hive69	2:High
+hive61	1:Low
+hive65	1:Low
+hive66	1:Low
+hive71	1:Low
+hive62	0:Control
+hive63	0:Control
+hive67	0:Control
+hive70	0:Control

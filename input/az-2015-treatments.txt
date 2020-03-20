@@ -1,0 +1,17 @@
+Hive	Treatment
+H101	3:High
+H102	1:Low
+H103	0:Control
+H104	2:Medium
+H105	1:Low
+H106	0:Control
+H107	3:High
+H108	2:Medium
+H109	2:Medium
+H110	3:High
+H111	0:Control
+H112	1:Low
+H113	0:Control
+H114	1:Low
+H115	3:High
+H116	2:Medium
