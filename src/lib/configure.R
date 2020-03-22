@@ -7,6 +7,7 @@ library(gridExtra)
 library(lubridate)
 library(plyr)
 library(reshape2)
+library(scales)
 library(segmented)
 library(stringr)
 

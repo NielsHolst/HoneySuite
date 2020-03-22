@@ -21,6 +21,7 @@ plots = list(
   plot_variables_by_day(az2015, c("WeightGain", "CosSinR2", "CosSinAmplitude"), dmy("1/7/2015"), 14)
 )
 
+# Write plots to PDF file 
 pdf("../output/plot-az.pdf", paper="USr")
 l_ply(plots, grid.draw)
 dev.off()

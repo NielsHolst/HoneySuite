@@ -259,13 +259,13 @@ remove_ends = function(w) {
 
 # Regresses a cosine-sine curve on hour and detrended weight;
 # Returns the lm model, or NULL if there are too few observations
-cos_sin_model = function(w) {
+cos_sin_model = function(w, variable) {
   # Data from one day only allowed
   assert_that(length(unique(w$Date)) == 1)
   # Pick data to model
   M = data.frame(
     x = w$Hour/24*2*pi,
-    y = w$DetrendedWeight
+    y = w[,variable]
   )
   M = M[complete.cases(M),]
   # Require at least 30 data points for the regression
@@ -305,13 +305,15 @@ process_meta_record = function(record) {
   M = ddply(W, .(Hive, Date), function(w) { detrend_weight(w, WD) })
   W = cbind(W, DetrendedWeight=M$DetrendedWeight)
 
-  cos_sin_models = ddply(W, .(Hive, Date), cos_sin_model)
+  cos_sin_models = ddply(W, .(Hive, Date), cos_sin_model, variable="DetrendedWeight")
   WD = join(WD, cos_sin_models[c("Hive","Date","CosSinR2","CosSinAmplitude")])
   
   curves = ddply(W, .(Hive, Date), predict_cos_sin_model, cos_sin_models=cos_sin_models)
   W = cbind(W, CosSinWeight=curves$CosSinWeight)
-    
-  write_output(record, W)
-  write_output(record, WD)
+  
+  maW = W
+  maWD = WD
+  write_output(record, maW)
+  write_output(record, maWD)
 }
 

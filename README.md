@@ -5,21 +5,16 @@
 3. Open the file *src/process_input_files.R*. Edit **setwd(..)** to reflect the path to your *HoneySuite/src* folder.
 4. Run *src/process_input_files.R*. After a couple minutes it will have finished.
 5. Study the files in *HoneySuite/output*:
-    1. *xxx-W.Rdata* contains the original data from the file *input/xxx.txt* but converted to solar time and rinsed for outliers and weight noise. 
-    2. *xxx-WD.Rdata* contains daily summary parameters.
+    1. *xxx-W.Rdata* contains the original data from the file *input/xxx.txt* but converted to solar time and rinsed for outliers and weight noise. This is the **W data frame** found in the R scripts.
+    2. *xxx-WD.Rdata* contains daily summary parameters.  This is the **WD data frame** found in the R scripts.
     3. *xxx-noise_dropped* contains observations that were dropped due to weight noise.
+6. The *src/append-mov-avg-detrended.R.R* and *src/plot-az-mov-avg.R*. files demonstrate how to add additional parameters as columns to the W and WD data frames and subsequently plot them.
 
 ## Plotting
 1. Open *src/plot-az.R* and edit its **setwd(..)** as above.
 2. Run it. It produces some sample outputs:
     1. A plot on the screen.
     2. A pdf file with various plots found in *output/plot-az.pdf*.  
-
-## Your own code
-1. Begin any script with **two lines** identical to those found in *src/plot-az.R*.
-2. As exemplified in the same script, **get the metadata** for the input files and pick the data sets you want to work on.
-3. Write your own code.
-
 ## Input data format
 1. All input data are **tab-separated**, column-oriented text files. 
     1. Set up data in a spreadsheet
@@ -47,3 +42,13 @@
     2. There can be one or more columns after that identifying the treatment. The plot functions have currently been set up to expect a column called **Treatment**.
   3. See existing treatment files for examples.
   
+## Adding your own code
+1. Begin any script with **two lines** identical to those found in *src/append-mov-avg-detrended.R.R* and *src/plot-az-mov-avg.R*.
+2. As exemplified in the same scripts, **get the metadata** for the input files.
+    1. Either pick the data sets you want to work on as shown in *src/plot-az-mov-avg.R*;
+    2. Or process all the available data, record by record in the metadata file, as shown in *src/append-mov-avg-detrended.R.R*.
+3. The procedure is
+    1. Add columns to either the **W** or the **WD** data frame (or both) as needed. 
+    2. If the data frames were updated, save them using *write_output* function.
+    3. Process and plot the **W** and **WD** data frames.
+
