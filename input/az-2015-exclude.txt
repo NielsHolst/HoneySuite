@@ -1,29 +1,29 @@
-Date	Comment	FromTime	ToTime	Hives
-26/02/2015	Evaluation	01:00	23:00	*
-26/03/2015	Evaluation	01:00	23:00	*
-22/04/2015	Other	01:00	23:00	*
-07/05/2015	Unexplained	01:00	23:00	H106
-13/05/2015	Unexplained	01:00	23:00	H106
-03/06/2015	Evaluation	01:00	23:00	*
-08/06/2015	Feeding	01:00	23:00	*
-11/06/2015	Unexplained	01:00	23:00	H113
-17/06/2015	Feeding	01:00	23:00	*
-23/06/2015	Unexplained	01:00	23:00	H108
-24/06/2015	Unexplained	01:00	23:00	H108
-25/06/2015	Unexplained	01:00	23:00	H108
-30/06/2015	Rain	01:00	23:00	*
-08/07/2015	Evaluation	01:00	23:00	*
-10/07/2015	Other	01:00	23:00	*
-14/07/2015	Feeding	01:00	23:00	*
-17/07/2015	Feeding	01:00	23:00	*
-21/07/2015	Feeding	01:00	23:00	*
-24/07/2015	Feeding	01:00	23:00	*
-28/07/2015	Feeding	01:00	23:00	*
-31/07/2015	Feeding	01:00	23:00	*
-04/08/2015	Feeding	01:00	23:00	*
-05/08/2015	Evaluation	01:00	23:00	*
-06/08/2015	Rain	01:00	23:00	*
-07/08/2015	Feeding	01:00	23:00	*
-08/08/2015	Rain	01:00	23:00	*
-11/08/2015	Feeding	01:00	23:00	*
-12/08/2015	Feeding	01:00	23:00	*
+Date	Hives	Comment
+26/02/2015	all	Evaluation
+26/03/2015	all	Evaluation
+22/04/2015	all	Other
+07/05/2015	H106	Unexplained
+13/05/2015	H106	Unexplained
+03/06/2015	all	Evaluation
+08/06/2015	all	Feeding
+11/06/2015	H113	Unexplained
+17/06/2015	all	Feeding
+23/06/2015	H108	Unexplained
+24/06/2015	H108	Unexplained
+25/06/2015	H108	Unexplained
+30/06/2015	all	Rain
+08/07/2015	all	Evaluation
+10/07/2015	all	Other
+14/07/2015	all	Feeding
+17/07/2015	all	Feeding
+21/07/2015	all	Feeding
+24/07/2015	all	Feeding
+28/07/2015	all	Feeding
+31/07/2015	all	Feeding
+04/08/2015	all	Feeding
+05/08/2015	all	Evaluation
+06/08/2015	all	Rain
+07/08/2015	all	Feeding
+08/08/2015	all	Rain
+11/08/2015	all	Feeding
+12/08/2015	all	Feeding

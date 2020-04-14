@@ -1,3 +1,4 @@
-FileName	Location	Latitude	Longitude	TimeZone
-az-2014.txt	Santa Rita, AZ	31.82138	-110.86613	-7
-az-2015.txt	Santa Rita, AZ	31.82138	-110.86613	-7
+FileName	Location	Latitude	Longitude	TimeZone	TreatmentDate
+az-2014.txt	Santa Rita, AZ	31.82138	-110.86613	-7	15/07/2014
+az-2015.txt	Santa Rita, AZ	31.82138	-110.86613	-7	10/07/2015
+az-2017.txt	Santa Rita, AZ	31.82138	-110.86613	-7	17/07/2017

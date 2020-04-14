@@ -1,0 +1,12 @@
+Hive	Treatment
+hive225	Control
+hive229	Control
+hive234	Control
+hive238	Control
+hive239	Control
+hive247	Control
+hive226	Imida_5
+hive231	Imida_5
+hive235	Imida_5
+hive245	Imida_5
+hive246	Imida_5

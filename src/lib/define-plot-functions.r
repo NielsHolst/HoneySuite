@@ -72,7 +72,7 @@ plot_variables_n_days = function(record, variables, W, from_date, num_days) {
 }
 
 # Plot variables from W data frame
-plot_variables = function(record, variables, from_date, num_days) {
+plot_variables = function(record, variables, from_date, num_days=1) {
   # Load data
   W = load_output(record, "W")
   # Construct title
@@ -86,15 +86,23 @@ plot_variables = function(record, variables, from_date, num_days) {
 }
 
 # Plot variables from WD data frame
-plot_variables_by_day = function(record, variables, from_date, num_days) {
+plot_variables_by_day = function(record, variables, from_date=NA, num_days=NA) {
   # Load daily data
   WD  = load_output(record, "WD")
+  # Set up time period
+  if (is.na(from_date)) from_date = min(WD$Date)
+  if (is.na(num_days)) num_days = as.numeric(max(WD$Date) - from_date) + 1
   # Pick variables and dates
   id_variables = c("Date", "Hive", "Treatment")
   w = subset(WD, Date>=from_date & Date<from_date+num_days)
   w = w[c(id_variables, variables)]
   w = melt(w, id.vars=id_variables, variable.name="Variable", value.name="Value")
   w$Date = as.POSIXct(w$Date)
+  
+  # Set up vertical line for treatment date
+  treatment_date = record$TreatmentDate
+  treatment_line = if (treatment_date < from_date | treatment_date > from_date+num_days) NULL else 
+                   geom_vline(xintercept=treatment_date, size=2, alpha=0.3, colour="brown")
   
   # Insert missing values for dates missing
   jumps = diff(w$Date)
@@ -113,11 +121,11 @@ plot_variables_by_day = function(record, variables, from_date, num_days) {
     w = rbind(w, blanks)
   }
   # Plot
-  G = ggplot(w, aes(x=Date, y=Value, colour=Treatment, group=Hive)) +
+  breaks = if (num_days>250) "months" else if (num_days>100) "2 weeks" else if (num_days>14) "weeks" else "days"
+  ggplot(w, aes(x=Date, y=Value, colour=Treatment, group=Hive)) +
+    treatment_line +
     geom_line() +
-    geom_point() +
-    # guides(colour = guide_legend(reverse=TRUE)) +
     facet_wrap(~Variable, scales="free_y", ncol=1) +
-    labs(title=title_from_record(record))
-  if (num_days>15) G else G + scale_x_datetime(breaks = "days", labels = date_format("%e %b"))
+    labs(title=title_from_record(record)) +
+    scale_x_datetime(breaks=breaks, minor_breaks=NULL, labels = date_format("%e %b")) 
 }

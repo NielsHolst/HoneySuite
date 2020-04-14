@@ -3,9 +3,26 @@ input_file_path = function(file_name) {
   paste("../input", file_name, sep="/")
 }
 
+# Flexible time conversions
+flex_parse_date_time = function(text) {
+  formats = c("d!/m!/Y! H!:M!:S!",
+              "m!/d!/Y! H!:M!:S!",
+              "Y!/m!/d! H!:M!:S!")
+  parse_date_time(text, formats, truncated=1)
+}
+
+flex_parse_date = function(text) {
+  formats = c("d!/m!/Y!",
+              "m!/d!/Y!",
+              "Y!/m!/d!")
+  parse_date_time(text, formats)
+}
+
 # Read meta data file
 read_meta_data = function(file_name) {
-  read.table(input_file_path(file_name), TRUE, "\t", stringsAsFactors=FALSE)
+  M = read.table(input_file_path(file_name), TRUE, "\t", stringsAsFactors=FALSE)
+  M$TreatmentDate = flex_parse_date(M$TreatmentDate)
+  M
 }
 
 # Read exclude file
@@ -18,29 +35,26 @@ read_exclude_file = function(record, W) {
   
   # Read file
   E = read.table(file_path, TRUE, "\t", stringsAsFactors=FALSE)
-  colnames(E)[1:5] = c("Date","Comment","FromTime","ToTime","Hives")
   
-  # Parse date-times
-  formats = c("d!/m!/Y! H!:M!:S!",
-              "m!/d!/Y! H!:M!:S!",
-              "Y!/m!/d! H!:M!:S!")
-  E$FromDateTime = parse_date_time(paste(E$Date,E$FromTime), formats, truncated=1)
-  E$ToDateTime   = parse_date_time(paste(E$Date,E$ToTime),   formats, truncated=1)
+  # Exclude observations between 01:00 and 23:00 on the date
+  E$FromDateTime = flex_parse_date_time(paste(E$Date,"1:00"))
+  E$ToDateTime   = flex_parse_date_time(paste(E$Date,"23:00"))
   
   # Parse dates
-  formats = c("d!/m!/Y!",
-              "m!/d!/Y!",
-              "Y!/m!/d!")
-  E$Date = parse_date_time(E$Date, formats)
+  E$Date = flex_parse_date(E$Date)
+
+  # Remove "none" hives
+  E = subset(E, tolower(Hives)!="none")
 
   # Split string at comma and trim away any spaces
   split = function(x) {
     y = strsplit(x, ",")[[1]]
     trimws(y)
   }
+    
   # Expand jokers to all hives
   hive_names = levels(W$Hive)
-  ddply(E, .(Date, FromDateTime, ToDateTime), function(x) { data.frame(Hive = if (x$Hives=="*") hive_names else split(x$Hives)) })
+  ddply(E, .(Date, FromDateTime, ToDateTime), function(x) { data.frame(Hive = if (tolower(x$Hives)=="all") hive_names else split(x$Hives)) })
 }
 
 # Read treatments data frame from file, or else return NULL
@@ -215,19 +229,16 @@ summarize_daily = function(record, W) {
   if (!is.null(T)) WD = join(WD, T)
   # Compute weight gain
   WD$WeightGain = WD$MidnightWeight2 - WD$MidnightWeight1
+  # Replace excluded values with NA
+  E = read_exclude_file(record, WD)
+  for (i in 1:nrow(E)) {
+    inside_time_interval = (WD$Date >= date(E$FromDateTime[i]) & WD$Date <= date(E$ToDateTime[i]))
+    hive = as.character(E$Hive[i]) 
+    WD$WeightGain[inside_time_interval & WD$Hive==hive] = NA
+  }
+  
   # Return
   WD
-}
-
-# Remove excluded hive*date instances 
-remove_excluded = function(record, M) {
-  E = read_exclude_file(record, M)
-  # Reduce data frame
-  for (i in 1:nrow(E)) {
-    keep = (M$Hive != E$Hive[i]) | (M$Date != E$Date[i])
-    M = M[keep,]
-  }
-  M
 }
 
 # Detrends the weight for a hive within one day;
@@ -297,9 +308,6 @@ process_meta_record = function(record) {
   W  = read_and_amend_data(record)
   WD = summarize_daily(record, W)
   
-  W  = remove_excluded(record, W)
-  WD = remove_excluded(record, WD)
-  
   W  = ddply(W, .(Hive), remove_ends)
 
   M = ddply(W, .(Hive, Date), function(w) { detrend_weight(w, WD) })
@@ -311,9 +319,7 @@ process_meta_record = function(record) {
   curves = ddply(W, .(Hive, Date), predict_cos_sin_model, cos_sin_models=cos_sin_models)
   W = cbind(W, CosSinWeight=curves$CosSinWeight)
   
-  maW = W
-  maWD = WD
-  write_output(record, maW)
-  write_output(record, maWD)
+  write_output(record, W)
+  write_output(record, WD)
 }
 

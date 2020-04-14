@@ -1,0 +1,47 @@
+Date	Hives	Comment
+29/06/2017	all	Q and hive checks before eval.  
+10/07/2017	all	WGM, EB:  collected wax & honey samples, installed thermochrons, inserted sticky boards
+11/07/2017	all	Missing data aftter midnight to following day
+12/07/2017	all	Stickies removed.  Hive evaluation (all woodenware weighed), NEB screens installed
+13/07/2017	hive228	Collected NEBs from all, inspected sick brood from 228 (rope test=not ropey)
+14/07/2017	all	Delivered 3kg treatment syrup to all.
+17/07/2017	all	Treatment delivery (2 kg added to feeders). Hives shimmed to allow more rain drainage.
+20/07/2017	all	Treatment delivery (3kg).  Microphones installed.
+24/07/2017	all	Treatment delivery (Feeders weighed and emptied, fresh 3kg delivered to all).  Microphones all reset to check for functionality (lights).
+27/07/2017	all	Treatment delivery (3kg). Short 3 kg of Cloth5, so each only received 2kg.  Queen/hive checks:  Hive 240 has many double laid eggs, though Q+y.
+01/08/2017	all	Treatment delivery (up to 3kg)
+03/08/2017	all	Microphone extension cords and 2nd deep with foundation frames installed.  Rigs 2 and 5 reinstalled.  Syrup treatments changed (feeders weighed and emptied, 3kg delivered to all).
+07/08/2017	all	Treatment delivery (up to 3kg)
+14/08/2017	all	Treatment delivery (up to 3kg)
+17/08/2017	all	Treatment delivery (up to 3kg).  Microphone data downloaded.
+21/08/2017	all	Treatment delivery (up to 3kg)
+23/08/2017	all	Missing data aftter midnight to following day
+24/08/2017	all	Hive Evaluations, NEB screens installed.
+25/08/2017	all	NEBs collected. Honey and wax samples collected. 
+30/08/2017	all	Missing data aftter midnight to following day
+31/08/2017	all	Feeders checked, those with syrup weighed and emptied.  Scalee under 229 retightened and leveled.
+21/09/2017	none	Removed all microphone flash drives.  Switched out all thermochrons.  
+26/09/2017	none	Microphone flash drives reinstalled.  
+04/10/2017	all	Hive evaluations. 
+05/10/2017	all	Collected honey and wax samples from all.  Removed 2nd deep and foundation frames from majority of hives.
+12/10/2017	hive231, hive235,hive238,hive247	Reweighed all woodenware from:  231, 235, 238, 247.  New K17.2 installed in 238. Installed sticky boards in all.
+16/10/2017	hive238	Removed sticky boards.  Checked Q in 238 (SSQ removed). Mic rig removed from 238 (wont power on).
+19/10/2017	none	2 strips of Apivar in all. K17.2 in 238. 
+30/10/2017	none	Removed microphone flash drives from all, data download
+02/11/2017	none	Reinstalled microphone flash drives in all
+09/11/2017	all	Hive evaluations. No NEBS. Wax and honey sampled.
+13/11/2017	all	Reweighed top boxes: 226, 229. Q checks: 225, 234, 245. Installed new K17.2 Qs: 234, 245. Fed heavy SS to all.
+15/11/2017	hive245,hive246,hive247	Additional syrup delivered to 245, 246, 247
+20/11/2017	hive225,hive229,hive234,hive238,hive226,hive231	Additional syrup deliver to all, except:  235, 239, 245, 246, 247. 
+29/11/2017	all	Uneaten syrup removed from feeders.  Q removed from 234 (drone layer)
+04/12/2017	none	Thermochrons replaced. New K17.2 in 234. Mic flash drives removed for download.
+07/12/2017	none	Reinstalled microphone flash drives in all
+03/01/2018	none	Q check 234=Q+y. 239=Dead out, removed. Mic flash drives removed for download.
+08/01/2018	none	Reinstalled microphone flash drives in all
+25/01/2018	none	Data download. Microphone rig voltages checked (all >13VDC). 
+13/02/2018	all	Hive evaluations for all.  All Q+y. No sampling or NEBs.
+21/02/2018	none	Thermochrons replaced.  
+19/03/2018	none	Data download.  Removed Dead Out: 234
+26/03/2018	none	Sticky boards installed
+29/03/2018	none	Hive Evaluations. NEB screens installed (except 241). 247=Q? Some with low/no honey stores=225, 229, 235
+30/03/2018	all	NEBs collected. Honey sampled. Experiment over.
