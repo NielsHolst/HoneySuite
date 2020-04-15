@@ -11,10 +11,10 @@
 6. The *src/append-mov-avg-detrended.R.R* and *src/plot-az-mov-avg.R*. files demonstrate how to add additional parameters as columns to the W and WD data frames and subsequently plot them.
 
 ## Plotting
-1. Open *src/plot-az.R* and edit its **setwd(..)** as above.
+1. Open *src/plot-all-daily.R* and edit its **setwd(..)** as above.
 2. Run it. It produces some sample outputs:
-    1. A plot on the screen.
-    2. A pdf file with various plots found in *output/plot-az.pdf*.  
+    1. Some plots on the screen.
+    2. A pdf file with various plots found in *output/plot-all-daily.pdf*.  
 ## Input data format
 1. All input data are **tab-separated**, column-oriented text files. 
     1. Set up data in a spreadsheet
