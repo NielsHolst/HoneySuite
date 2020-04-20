@@ -49,16 +49,17 @@ scale_linetype_discrete = function(...) {
 
 theme_set(theme_minimal())
 
-# Run an R script
-run = function(name, timed = FALSE) {
-  if (timed) print(paste(Sys.time(), "started"))
+# Run an R script with timing
+run = function(name) {
+  print(paste(name, "started at ", Sys.time()))
   source(name)
-  if (timed) print(paste(Sys.time(), "finished"))
+  print(paste(name, "finished at", Sys.time()))
 }
 
 # Define all functions
-run("lib/define-misc-functions.R")
-run("lib/define-input-functions.R")
-run("lib/define-output-functions.R")
-run("lib/define-astronomy-functions.R")
-run("lib/define-plot-functions.R")
+source("lib/define-misc-functions.R")
+source("lib/define-astronomy-functions.R")
+source("lib/define-input-functions.R")
+source("lib/define-output-functions.R")
+source("lib/define-breakfast-canyon-functions.R")
+source("lib/define-plot-functions.R")

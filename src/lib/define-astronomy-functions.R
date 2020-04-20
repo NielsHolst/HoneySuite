@@ -129,4 +129,12 @@ solar_time = function(latitude, longitude, time_zone, date_time_vector) {
   ldply(list(date_time_vector), function(x) solar_basics(latitude, longitude, time_zone, x))
 }
 
-  
+# Get time of sunrise and sunset
+sun = function(record, date) {
+  # Use solar time at noon to get the date's sunrise and sunset
+  T = solar_time(record$Latitude, record$Longitude, record$TimeZone, as.POSIXct(date) + 3600*12)
+  data.frame(
+    Rise = hours_since_midnight(T$SunriseSolarTime),
+    Set  = hours_since_midnight(T$SunsetSolarTime)
+  )
+}

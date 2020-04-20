@@ -32,3 +32,34 @@ hours_since_midnight = function(date_time) {
   as.numeric(difftime(date_time, date(date_time), units="hours"))
 }
 
+# Returns list with NULL values removed
+remove_null = function(lst) {
+  ix = which(sapply(lst, is.null))
+  if (length(ix)==0) lst else lst[-ix]
+}
+
+# Return a data frame pointing out those values in vector x, that lie outside sd_max standard deviations
+find_outliers = function(x, sd_max) {
+  M = data.frame(Value=x)
+  M$Std = NA
+  M$IsOutlier = NA
+  ix = !is.na(x)
+  M$Std[ix] = scale(x[ix])
+  M$IsOutlier[ix] = abs(M$Std[ix]) > sd_max
+  M$IsOutlier[is.na(M$IsOutlier)] = FALSE
+  M
+}
+
+# Find the SLR model for date and hive; returns NULL if not found
+find_slr_models = function(slr_models, date, hive=NULL) {
+  ix_date = which(sapply(slr_models, function(x) x$Date==date))
+  # Find by both date and hive
+  if (!is.null(hive)) {
+    ix_hive = which(sapply(slr_models, function(x) x$Hive==hive))
+    ix = intersect(ix_hive, ix_date) 
+  # Find by date only
+  } else {
+    ix = ix_date
+  }
+  if (length(ix)==0) NULL else slr_models[ix]
+}

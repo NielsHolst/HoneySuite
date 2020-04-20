@@ -1,6 +1,7 @@
-# Set source folder and configure
-setwd("C:/Users/au152367/Documents/RDev/HoneySuite/src")
-source("lib/configure.R")
+## Set source folder and configure
+## Only needed if you run this script alone
+# setwd("C:/Users/au152367/Documents/RDev/HoneySuite/src")
+# source("lib/configure.R")
 
 # Compute 24-h moving average and subtract it to detrend weights
 ma_detrend = function (w) {
